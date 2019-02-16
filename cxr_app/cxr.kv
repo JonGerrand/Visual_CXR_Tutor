@@ -1,0 +1,36 @@
+<ImageViewer>:
+    orientation: 'vertical'
+    width: 1024
+    Image:
+        source: root.cxr_source
+        canvas:
+            Color:
+                rgba: 1, .1, .1, root.visibility * 0.5
+            Line:
+                width: 2.
+                rectangle: root.finding_coords
+
+
+    Label:
+        size: self.texture_size
+        size_hint_y: None
+        font_size: 30
+        text: root.cxr_finding
+        opacity: root.visibility
+        canvas:
+            Color:
+                rgba: 0, 1, 0, 0.5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: 100
+        Button:
+            text: 'Next X-ray'
+            on_press: root.load_new_cxr()
+        Button:
+            text: 'Reveal Finding'
+            on_press: root.show_finding()
